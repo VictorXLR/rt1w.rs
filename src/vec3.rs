@@ -52,7 +52,7 @@ impl Vec3 {
             z: self.x * rhs.y - self.y * rhs.x,
         }
     }
-    fn unit_vector(v: Vec3) -> Self {
+    pub fn unit_vector(v: Self) -> Self {
         v / v.length()
     }
 }
@@ -251,6 +251,13 @@ impl Mul<f64> for Vec3 {
         }
     }
 }
+impl Mul<Vec3> for f64 {
+    type Output = Vec3;
+
+    fn mul(self, rhs: Vec3) -> Vec3 {
+        rhs * self
+    }
+}
 
 #[test]
 fn mul_test() {
@@ -260,6 +267,12 @@ fn mul_test() {
 #[test]
 fn mul_f64_test() {
     let c = Vec3::new(5.0, 5.0, 5.0) * 2.0;
+    assert_eq!(c, Vec3::new(10.0, 10.0, 10.0));
+}
+
+#[test]
+fn mul_flipped_f64_test() {
+    let c = 2.0 * Vec3::new(5.0, 5.0, 5.0);
     assert_eq!(c, Vec3::new(10.0, 10.0, 10.0));
 }
 
