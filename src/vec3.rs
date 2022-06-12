@@ -39,7 +39,7 @@ impl Vec3 {
         self.lenght_squared().sqrt()
     }
 
-    fn lenght_squared(&self) -> f64 {
+    pub fn lenght_squared(&self) -> f64 {
         self.x.powi(2) + self.y.powi(2) + self.z.powi(2)
     }
     pub fn dot(lhs: Self, rhs: Self) -> f64 {
