@@ -42,8 +42,8 @@ impl Vec3 {
     fn lenght_squared(&self) -> f64 {
         self.x.powi(2) + self.y.powi(2) + self.z.powi(2)
     }
-    fn dot(&self, rhs: Self) -> f64 {
-        self.x * rhs.x + self.y * rhs.y + self.z * rhs.z
+    pub fn dot(lhs: Self, rhs: Self) -> f64 {
+        lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z
     }
     fn cross(&self, rhs: Self) -> Self {
         Self {
